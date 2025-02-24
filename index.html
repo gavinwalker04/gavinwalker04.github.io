@@ -16,15 +16,15 @@
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card text-light bg-dark bg-gradient mb-3 col-12 col-md-6 rounded-4 mx-auto">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="card-title me-2">Weather <i class="bi bi-cloud-sun-fill text-warning"></i></h5>
-                <div class="dropdown">
+                <h5 class="card-title me-2" aria-label="Weather Widget Title">Weather <i class="bi bi-cloud-sun-fill text-warning" alt-text="Weather Logo"></i></h5>
+                <!-- <div class="dropdown">
                     <button class="btn btn-sm btn-secondary rounded-2 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                       Location
                     </button>
                     <ul id="cboLocation" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <option class="dropdown-item">Select Your Location</option>
                     </ul>
-                  </div>
+                  </div> -->
             </div>
             <div class="card-body">
                 <div class="row">
@@ -32,78 +32,76 @@
                     <div class="col-6">
                           <div>
                             <!-- Today's Date -->
-                            <p id="txtTodayDate" class="fw-bold">Feb 20, 2025</p>
+                            <p id="txtTodayDate" class="fw-bold" aria-label="Current Date">Feb 20, 2025</p>
                             <!-- Temperature -->
                             <div class="d-flex align-items-center">
-                                <h1 id="txtTodayTemp" class="display-2 fw-bold">21°F</h1>
-                                <i id="icnCondition" class="bi bi-question-circle-fill fs-1 ms-4"></i>
+                                <h1 id="txtTodayTemp" class="display-2 fw-bold" aria-label="Temperature in Fahrenheit">21°F</h1>
+                                <i id="icnCondition" class="bi bi-question-circle-fill fs-1 ms-4" alt-text="Weather Condition Icon"></i>
                             </div>
-                            <p id="txtCondition">Rainy</p>
+                            <p id="txtCondition" aria-label="Current Weather">Rainy</p>
                         </div>
                     </div>
 
                     <!-- Current Conditions -->
                     <div class="col-6">
-                        <p class="text-center fw-bold">Current Conditions</p>
+                        <p class="text-center fw-bold" aria-label="Current Conditions">Current Conditions</p>
                         <div class="row">
                              <!-- Humidity -->
                              <div class="col text-center">
-                                <p class="text-uppercase small mb-1">Humidity</p>
-                                <i id="icnHumidity" class="bi bi-moisture text-danger fs-1"></i>
-                                <p id="txtHumidity">20%</p>
+                                <p class="text-uppercase small mb-1" aria-label="Humidity Label">Humidity</p>
+                                <i id="icnHumidity" class="bi bi-moisture text-danger fs-1" alt-text="Humidity Icon"></i>
+                                <p id="txtHumidity" aria-label="Humidity Percentage">20%</p>
                             </div>
 
                             <!-- Precipitation -->
                             <div class="col text-center">
-                                <p class="text-uppercase small mb-1">Precip</p>
-                                <i id="icnPrecip" class="bi bi-cloud-rain-fill text-primary fs-1"></i>
-                                <p id="txtPrecip">20%</p>
+                                <p class="text-uppercase small mb-1" aria-label="Precipitation Label">Precip</p>
+                                <i id="icnPrecip" class="bi bi-cloud-rain-fill text-primary fs-1" alt-text="Precipitation Icon"></i>
+                                <p id="txtPrecip" aria-label="Precipitation Percentage">20%</p>
                             </div>
                     </div>
                 </div>
                 <!-- 7-Day Forecast -->
-                <!-- <div class="row">
-                    <div class="col-12">
+                    <!-- <div class="col-12">
                         <p>7-Day Forecast</p>
-                        <div class=" d-flex flex-nowrap row row-cols-7 text-center">
+                        <div class="d-flex flex-nowrap row row-cols-7 text-center">
                             <div class="col">
-                                <p class="small mb-1">Mon</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4"></i>
-                                <p class="small">21°F</p>
+                                <p class="small mb-1" id="lblMonday">Mon</p>
+                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnMonday"></i>
+                                <p class="small" id="txtMondayTemp">21°F</p>
                             </div>
                             <div class="col">
                                 <p class="small mb-1">Tue</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4"></i>
-                                <p class="small">21°F</p>
+                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnTuesday"></i>
+                                <p class="small" id="txtTuesdayTemp">21°F</p>
                             </div>
                             <div class="col">
                                 <p class="small mb-1">Wed</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4"></i>
-                                <p class="small">21°F</p>
+                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnWednesday"></i>
+                                <p class="small" id="txtWednesdayTemp">21°F</p>
                             </div>
                             <div class="col">
                                 <p class="small mb-1">Thu</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4"></i>
-                                <p class="small">21°F</p>
+                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnThursday"></i>
+                                <p class="small" id="txtThursdayTemp">21°F</p>
                             </div>
                             <div class="col">
                                 <p class="small mb-1">Fri</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4"></i>
-                                <p class="small">21°F</p>
+                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnFriday"></i>
+                                <p class="small" id="txtFridayTemp">21°F</p>
                             </div>
                             <div class="col">
                                 <p class="small mb-1">Sat</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4"></i>
-                                <p class="small">21°F</p>
+                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnSaturday"></i>
+                                <p class="small" id="txtSaturdayTemp">21°F</p>
                             </div>
                             <div class="col">
                                 <p class="small mb-1">Sun</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4"></i>
-                                <p class="small">21°F</p>
+                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnSunday"></i>
+                                <p class="small" id="txtSundayTemp">21°F</p>
                             </div>
                         </div>
-                    </div>
-                </div> -->
+                    </div> -->
 
 
             </div>
@@ -138,71 +136,71 @@
                             txtCondition.innerHTML = "Clear Sky"
                             break;
                         case 1:
-                            icnCondition.className = "bi bi-cloud-fill text-secondary" // Mostly Clear
+                            icnCondition.className = "bi bi-cloud-sun-fill text-secondary fs-1 ms-2" // Mostly Clear
                             txtCondition.innerHTML = "Mostly Clear"
                             break;
                         case 2:
-                            icnCondition.className = "bi bi-clouds-fill text-muted" // Partly Cloudy
+                            icnCondition.className = "bi bi-clouds-fill text-secondary fs-1 ms-2" // Partly Cloudy
                             txtCondition.innerHTML = "Partly Cloudy"
                             break;
                         case 3:
-                            icnCondition.className = "bi bi-cloud-fill text-dark" // Overcast
+                            icnCondition.className = "bi bi-cloud-fill text-dark fs-1 ms-2" // Overcast
                             txtCondition.innerHTML = "Overcast"
                             break;
                         case 45:
-                            icnCondition.className = "bi bi-cloud-fog-fill text-secondary" // Fog
+                            icnCondition.className = "bi bi-cloud-fog-fill text-secondary fs-1 ms-2" // Fog
                             txtCondition.innerHTML = "Fog"
                             break;
                         case 48:
-                            icnCondition.className = "bi bi-cloud-fog-fill text-secondary" // Fog
+                            icnCondition.className = "bi bi-cloud-fog-fill text-secondary fs-1 ms-2" // Fog
                             txtCondition.innerHTML = "Fog"
                             break;
                         case 51:
-                            icnCondition.className = "bi bi-cloud-drizzle-fill text-primary" // Light Drizzle
+                            icnCondition.className = "bi bi-cloud-drizzle-fill text-primary fs-1 ms-2" // Light Drizzle
                             txtCondition.innerHTML = "Light Drizzle"
                             break;
                         case 53:
-                            icnCondition.className = "bi bi-cloud-drizzle-fill text-primary" // Moderate Drizzle
+                            icnCondition.className = "bi bi-cloud-drizzle-fill text-primary fs-1 ms-2" // Moderate Drizzle
                             txtCondition.innerHTML = "Moderate Drizzle"
                             break;
                         case 55:
-                            icnCondition.className = "bi bi-cloud-rain-heavy-fill text-primary" // Heavy Drizzle
+                            icnCondition.className = "bi bi-cloud-rain-heavy-fill text-primary fs-1 ms-2" // Heavy Drizzle
                             txtCondition.innerHTML = "Heavy Drizzle"
                             break;
                         case 61:
-                            icnCondition.className = "bi bi-cloud-rain-fill text-primary" // Light Rain
+                            icnCondition.className = "bi bi-cloud-rain-fill text-primary fs-1 ms-2" // Light Rain
                             txtCondition.innerHTML = "Light Rain"
                             break;
                         case 63:
-                            icnCondition.className = "bi bi-cloud-rain-fill text-primary" // Moderate Rain
+                            icnCondition.className = "bi bi-cloud-rain-fill text-primary fs-1 ms-2" // Moderate Rain
                             txtCondition.innerHTML = "Moderate Rain"
                             break;
                         case 65:
-                            icnCondition.className = "bi bi-cloud-rain-heavy-fill text-primary" // Heavy Rain
+                            icnCondition.className = "bi bi-cloud-rain-heavy-fill text-primary fs-1 ms-2" // Heavy Rain
                             txtCondition.innerHTML = "Heavy Rain"
                             break;
                         case 71:
-                            icnCondition.className = "bi bi-snow text-info" // Light Snow
+                            icnCondition.className = "bi bi-snow text-info fs-1 ms-2" // Light Snow
                             txtCondition.innerHTML = "Light Snow"
                             break;
                         case 73:
-                            icnCondition.className = "bi bi-snow text-info" // Moderate Snow
+                            icnCondition.className = "bi bi-snow text-info fs-1 ms-2" // Moderate Snow
                             txtCondition.innerHTML = "Moderate Snow"
                             break;
                         case 75:
-                            icnCondition.className = "bi bi-snow2 text-info" // Heavy Snow
+                            icnCondition.className = "bi bi-snow2 text-info fs-1 ms-2" // Heavy Snow
                             txtCondition.innerHTML = "Heavy Snow"
                             break;
                         case 95:
-                            icnCondition.className = "bi bi-cloud-lightning-rain-fill text-danger" // Thunderstorms
+                            icnCondition.className = "bi bi-cloud-lightning-rain-fill text-danger fs-1 ms-2" // Thunderstorms
                             txtCondition.innerHTML = "Thunderstorms"
                             break;
                         case 96:
-                            icnCondition.className = "bi bi-cloud-lightning-fill text-warning" // Light Thunderstorms
+                            icnCondition.className = "bi bi-cloud-lightning-fill text-warning fs-1 ms-2" // Light Thunderstorms
                             txtCondition.innerHTML = "Light Thunderstorms"
                             break;
                         case 99:
-                            icnCondition.className = "bi bi-cloud-lightning-rain-fill text-danger" // Severe Thunderstorms
+                            icnCondition.className = "bi bi-cloud-lightning-rain-fill text-danger fs-1 ms-2" // Severe Thunderstorms
                             txtCondition.innerHTML = "Severe Thunderstorms"
                             break;
                     };                    
@@ -212,3 +210,20 @@
     </script>
 </body>
 </html>
+
+<!-- 
+Generative AI Uses:
+- In this assignment, the main areas that I used Generative AI to help me out were for little things here and there.
+One example is the switch statement that I used to determine the weather condition based on the weather code that was 
+returned from the API. I could have easily done this manually, but I wanted to use ChatGPT to speed up the process 
+instead of manually typing out each condition and the respective icons. This helped me to save time.
+
+- Another area that I used Generative AI for was for helping me figure out how to get started on working for the assignment.
+It helped me lay out the things I needed to do first and options I could take to help me get the ball rolling.
+
+- I did not have Chat GPT write the code for me, though I did use it to help me figure out why certain styling features
+weren't formatting as expected. It helped me to understand where I was going wrong and how to fix it.
+
+- Lastly, I used Generative AI to help me figure out how the manifest file should be structured and steps needed to
+implement my code as a PWA.
+-->
