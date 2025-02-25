@@ -117,6 +117,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+
+            // Element Declarations
             let txtTodayTemp = document.getElementById("txtTodayTemp");
             let icnCondition = document.getElementById("icnCondition");
             let txtCondition = document.getElementById("txtCondition");
@@ -126,16 +128,19 @@
             let txtPrecip = document.getElementById("txtPrecip");
             let txtTodayDate = document.getElementById("txtTodayDate")
 
+            // API URL
             const apiURL = "https://api.open-meteo.com/v1/forecast?latitude=36.1628&longitude=-85.5016&current=temperature_2m,relative_humidity_2m,weather_code&hourly=precipitation_probability&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago&forecast_days=1"
 
             fetch(apiURL)
                 .then(response => response.json())
                 .then(data => {
+                    // Dynamically Update Weather Data from API to the HTML Elements
                     txtTodayTemp.innerHTML = `${data.current.temperature_2m}°F`
                     txtHumidity.innerHTML = `${data.current.relative_humidity_2m}%`
                     txtPrecip.innerHTML = `${data.hourly.precipitation_probability[0]}%`
                     txtTodayDate.innerHTML = new Date().toLocaleDateString()
 
+                    // Dynamically Update Weather Condition Icon and Text based on Weather Code
                     switch(data.current.weather_code) {
                         case 0:
                             icnCondition.className = "bi bi-brightness-high-fill text-warning fs-1 ms-2" // Clear Sky
