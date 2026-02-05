@@ -1,240 +1,850 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Bootstrap Icons CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon.png">
-    <link rel="apple-touch-icon" href="icons/apple-icon.png">
-    <title>Weather App</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tav & Gav - Our Story</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #62AC68;
+      --cream: #F6F2E8;
+      --deep: #153A2A;
+      --accent: #FFD166;   /* warm complementary pop */
+      --accent2: #F4A7B9;  /* soft pink for romance */
+      --card: rgba(246, 242, 232, 0.92);
+      --shadow: 0 18px 45px rgba(0,0,0,.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body{
+      background: radial-gradient(circle at 20% 10%, rgba(255,255,255,.18), transparent 40%),
+                  radial-gradient(circle at 80% 30%, rgba(255,255,255,.14), transparent 45%),
+                  var(--bg);
+      color: var(--cream);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    /* Top nav */
+    .story-nav{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(21, 58, 42, 0.45);
+      border-bottom: 1px solid rgba(246,242,232,.18);
+    }
+    .story-nav .nav-link{
+      color: rgba(246,242,232,.9);
+    }
+    .story-nav .nav-link:hover{
+      color: white;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 4.5rem 0 2.5rem;
+    }
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      background: rgba(246,242,232,.18);
+      border: 1px solid rgba(246,242,232,.22);
+      padding: .55rem .85rem;
+      border-radius: 999px;
+      color: rgba(246,242,232,.95);
+    }
+    .hero h1{
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .hero p{
+      max-width: 56ch;
+      color: rgba(246,242,232,.92);
+    }
+
+    /* Timeline vertical line */
+    .timeline{
+      position: relative;
+      padding: 2rem 0 3rem;
+    }
+    .timeline::before{
+      content:"";
+      position:absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, rgba(246,242,232,.0), rgba(246,242,232,.55), rgba(246,242,232,.0));
+      border-radius: 999px;
+    }
+
+    /* Cards */
+    .memory-card{
+      background: var(--card);
+      color: var(--deep);
+      border: 1px solid rgba(21,58,42,.12);
+      border-radius: 1.25rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .memory-card .tag{
+      display:inline-block;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .02em;
+      padding: .35rem .6rem;
+      border-radius: 999px;
+      background: rgba(255,209,102,.35);
+      border: 1px solid rgba(255,209,102,.55);
+      color: var(--deep);
+    }
+    .memory-card .date{
+      font-weight: 800;
+      color: rgba(21,58,42,.85);
+    }
+
+    .img-wrap{
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: rgba(21,58,42,.08);
+      overflow: hidden;
+    }
+    .img-wrap img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.03);
+    }
+    .img-wrap::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(0deg, rgba(21,58,42,.18), transparent 45%);
+      pointer-events:none;
+    }
+
+    /* Alternating layout helpers */
+    .side-left { justify-content: flex-end; }
+    .side-right { justify-content: flex-start; }
+
+    /* Dot on the center line */
+    .dot{
+      position:absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid rgba(246,242,232,.85);
+      box-shadow: 0 10px 20px rgba(0,0,0,.18);
+      z-index: 2;
+    }
+
+    /* Reveal animation */
+    .reveal{
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .reveal.show{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Valentine card */
+    .valentine-wrap{
+      padding: 4rem 0 5rem;
+    }
+    .val-card{
+      background: rgba(246,242,232,.96);
+      color: var(--deep);
+      border-radius: 1.75rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(21,58,42,.14);
+      position: relative;
+      overflow: hidden;
+    }
+    .val-card::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle at 20% 20%, rgba(244,167,185,.35), transparent 40%),
+                  radial-gradient(circle at 80% 30%, rgba(255,209,102,.30), transparent 45%);
+      transform: rotate(-6deg);
+      pointer-events:none;
+    }
+    .val-card .content{
+      position: relative;
+      padding: 2.25rem;
+    }
+
+    .btn-yes{
+      background: var(--deep);
+      border-color: var(--deep);
+    }
+    .btn-yes:hover{ filter: brightness(1.05); }
+
+    .btn-no{
+      background: rgba(244,167,185,.25);
+      border: 1px solid rgba(244,167,185,.65);
+      color: var(--deep);
+      position: relative;
+    }
+
+    /* Small screens: remove center line and dots */
+    @media (max-width: 991.98px){
+      .timeline::before{ left: 1rem; transform:none; }
+      .dot{ left: 1rem; transform:none; }
+      .side-left, .side-right{ justify-content: flex-start; }
+    }
+  </style>
 </head>
-<body class="bg-secondary bg-gradient">
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="card text-light bg-dark bg-gradient mb-3 col-12 col-md-6 rounded-4 mx-auto">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="card-title me-2" aria-label="Weather Widget Title">Weather <i class="bi bi-cloud-sun-fill text-warning" alt-text="Weather Logo"></i></h5>
-                <h6 class="card-subtitle" aria-label="Location"><i class="bi bi-geo-alt text-danger me-2"></i>Cookeville, TN</h6>
-                <!-- <div class="dropdown">
-                    <button class="btn btn-sm btn-secondary rounded-2 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Location
-                    </button>
-                    <ul id="cboLocation" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <option class="dropdown-item">Select Your Location</option>
-                    </ul>
-                  </div> -->
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <!-- Location Dropdown and Large Temperature Text -->
-                    <div class="col-6">
-                          <div>
-                            <!-- Today's Date -->
-                            <p id="txtTodayDate" class="fw-bold" aria-label="Current Date">Feb 20, 2025</p>
-                            <!-- Temperature -->
-                            <div class="d-flex align-items-center">
-                                <h1 id="txtTodayTemp" class="display-2 fw-bold" aria-label="Temperature in Fahrenheit">21°F</h1>
-                                <i id="icnCondition" class="bi bi-question-circle-fill fs-1 ms-4" alt-text="Weather Condition Icon"></i>
-                            </div>
-                            <p id="txtCondition" aria-label="Current Weather">Rainy</p>
-                        </div>
-                    </div>
 
-                    <!-- Current Conditions -->
-                    <div class="col-6">
-                        <p class="text-center fw-bold" aria-label="Current Conditions">Current Conditions</p>
-                        <div class="row">
-                             <!-- Humidity -->
-                             <div class="col text-center">
-                                <p class="text-uppercase small mb-1" aria-label="Humidity Label">Humidity</p>
-                                <i id="icnHumidity" class="bi bi-moisture text-danger fs-1" alt-text="Humidity Icon"></i>
-                                <p id="txtHumidity" aria-label="Humidity Percentage">20%</p>
-                            </div>
+<body>
 
-                            <!-- Precipitation -->
-                            <div class="col text-center">
-                                <p class="text-uppercase small mb-1" aria-label="Precipitation Label">Precip</p>
-                                <i id="icnPrecip" class="bi bi-cloud-rain-fill text-primary fs-1" alt-text="Precipitation Icon"></i>
-                                <p id="txtPrecip" aria-label="Precipitation Percentage">20%</p>
-                            </div>
-                    </div>
-                </div>
-                <!-- 7-Day Forecast -->
-                    <!-- <div class="col-12">
-                        <p>7-Day Forecast</p>
-                        <div class="d-flex flex-nowrap row row-cols-7 text-center">
-                            <div class="col">
-                                <p class="small mb-1" id="lblMonday">Mon</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnMonday"></i>
-                                <p class="small" id="txtMondayTemp">21°F</p>
-                            </div>
-                            <div class="col">
-                                <p class="small mb-1">Tue</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnTuesday"></i>
-                                <p class="small" id="txtTuesdayTemp">21°F</p>
-                            </div>
-                            <div class="col">
-                                <p class="small mb-1">Wed</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnWednesday"></i>
-                                <p class="small" id="txtWednesdayTemp">21°F</p>
-                            </div>
-                            <div class="col">
-                                <p class="small mb-1">Thu</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnThursday"></i>
-                                <p class="small" id="txtThursdayTemp">21°F</p>
-                            </div>
-                            <div class="col">
-                                <p class="small mb-1">Fri</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnFriday"></i>
-                                <p class="small" id="txtFridayTemp">21°F</p>
-                            </div>
-                            <div class="col">
-                                <p class="small mb-1">Sat</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnSaturday"></i>
-                                <p class="small" id="txtSaturdayTemp">21°F</p>
-                            </div>
-                            <div class="col">
-                                <p class="small mb-1">Sun</p>
-                                <i class="bi bi-cloud-drizzle-fill fs-4" id="icnSunday"></i>
-                                <p class="small" id="txtSundayTemp">21°F</p>
-                            </div>
-                        </div>
-                    </div> -->
+  <!-- Hero -->
+  <header id="start" class="hero">
+    <div class="container">
+      <div class="hero-badge mb-3">
+        <span>📅</span>
+        <span>December 20, 2023 → Now</span>
+      </div>
 
+      <h1 class="display-5 mb-3">A Timeline of Us</h1>
+      <p class="lead mb-4">
+        Little moments, big memories, and everything in between. Scroll down to relive our favorite chapters.
+      </p>
 
-            </div>
-          </div>
-          <div class="card-footer">
-            <p class="text-center small">Weather data provided by <a href="https://open-meteo.com" target="_blank" rel="noopener noreferrer">Open-Meteo</a></p>
-          </div>
     </div>
-        
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
+  </header>
 
-            // Element Declarations
-            let txtTodayTemp = document.getElementById("txtTodayTemp");
-            let icnCondition = document.getElementById("icnCondition");
-            let txtCondition = document.getElementById("txtCondition");
-            let icnHumidity = document.getElementById("icnHumidity");
-            let txtHumidity = document.getElementById("txtHumidity");
-            let icnPrecip = document.getElementById("icnPrecip");
-            let txtPrecip = document.getElementById("txtPrecip");
-            let txtTodayDate = document.getElementById("txtTodayDate")
+  <!-- Timeline -->
+  <main id="memories" class="timeline">
+    <div class="container">
 
-            // API URL
-            const apiURL = "https://api.open-meteo.com/v1/forecast?latitude=36.1628&longitude=-85.5016&current=temperature_2m,relative_humidity_2m,weather_code&hourly=precipitation_probability&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago&forecast_days=1"
+      <!-- MEMORY CARDS -->
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal">
+          <div class="col-lg-6 d-flex side-left">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/01-first-date.jpg" alt="First Date">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">First Date</span>
+                  <span class="date">Dec 20th, 2023</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">First Date</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal flex-lg-row-reverse">
+          <div class="col-lg-6 d-flex side-right">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/02-snow-day.jpg" alt="Snow Day">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Snow Day</span>
+                  <span class="date">Jan 16th, 2024</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Snow Day</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center justify-content-lg-end">
+            <div class="w-100 pe-lg-4 text-lg-end">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal">
+          <div class="col-lg-6 d-flex side-left">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/03-valentines.jpg" alt="1st Valentine's Day">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">1st Valentine's Day</span>
+                  <span class="date">Feb 14th, 2024</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">1st Valentine's Day</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal flex-lg-row-reverse">
+          <div class="col-lg-6 d-flex side-right">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/04-virgin-falls.jpg" alt="Virgin Falls Hike">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Virgin Falls Hike</span>
+                  <span class="date">Mar 3rd, 2024</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Virgin Falls Hike</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center justify-content-lg-end">
+            <div class="w-100 pe-lg-4 text-lg-end">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal">
+          <div class="col-lg-6 d-flex side-left">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/05-summer-fun.jpg" alt="Summer Fun Day">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Summer Fun Day</span>
+                  <span class="date">May 29th, 2024</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Summer Fun Day</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal flex-lg-row-reverse">
+          <div class="col-lg-6 d-flex side-right">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/06-nashville-bday.jpg" alt="Nashville B-Day">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Nashville B-Day</span>
+                  <span class="date">Jun 10th, 2024</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Nashville B-Day</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center justify-content-lg-end">
+            <div class="w-100 pe-lg-4 text-lg-end">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal">
+          <div class="col-lg-6 d-flex side-left">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/07-rks-concert.jpg" alt="RKS Concert!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">RKS Concert!</span>
+                  <span class="date">Oct 19th, 2024</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">RKS Concert!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal flex-lg-row-reverse">
+          <div class="col-lg-6 d-flex side-right">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/08-halloween.jpg" alt="Halloween!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Halloween!</span>
+                  <span class="date">Oct 31st, 2024</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Halloween!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center justify-content-lg-end">
+            <div class="w-100 pe-lg-4 text-lg-end">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal">
+          <div class="col-lg-6 d-flex side-left">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/09-baptism.jpg" alt="My Baptism!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">My Baptism!</span>
+                  <span class="date">Nov 24th, 2024</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">My Baptism!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal flex-lg-row-reverse">
+          <div class="col-lg-6 d-flex side-right">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/10-your-graduation.jpg" alt="Your Graduation!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Your Graduation!</span>
+                  <span class="date">Dec 13th, 2024</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Your Graduation!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center justify-content-lg-end">
+            <div class="w-100 pe-lg-4 text-lg-end">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal">
+          <div class="col-lg-6 d-flex side-left">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/11-1year.jpg" alt="1 Year Celebration">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">1 Year Celebration</span>
+                  <span class="date">Dec 29th, 2024</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">1 Year Celebration</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal flex-lg-row-reverse">
+          <div class="col-lg-6 d-flex side-right">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/12-2nd-valentines.jpg" alt="2nd Valentine's Day Together!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">2nd Valentine's Day Together!</span>
+                  <span class="date">Feb 14th, 2025</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">2nd Valentine's Day Together!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal">
+          <div class="col-lg-6 d-flex side-left">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/13-summer-fun.jpg" alt="Summer Fun!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Summer Fun!</span>
+                  <span class="date">Jun-Jul, 2025</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Summer Fun!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal flex-lg-row-reverse">
+          <div class="col-lg-6 d-flex side-right">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/14-kurtis-conner.jpg" alt="Kurtis Conner Show!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Kurtis Conner Show!</span>
+                  <span class="date">Sep 17th, 2025</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Kurtis Conner Show!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center justify-content-lg-end">
+            <div class="w-100 pe-lg-4 text-lg-end">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal">
+          <div class="col-lg-6 d-flex side-left">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/15-lumineers.jpg" alt="Lumineers Concert!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Lumineers Concert!</span>
+                  <span class="date">Oct 3rd, 2025</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Lumineers Concert!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal flex-lg-row-reverse">
+          <div class="col-lg-6 d-flex side-right">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/16-wedding.jpg" alt="Wedding Date!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Wedding Date!</span>
+                  <span class="date">Oct 11th, 2025</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Wedding Date!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal">
+          <div class="col-lg-6 d-flex side-left">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/17-halloween-bob-linda.jpg" alt="Halloween Bob and Linda!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Halloween Bob and Linda!</span>
+                  <span class="date">Oct 31st, 2025</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Halloween Bob and Linda!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal flex-lg-row-reverse">
+          <div class="col-lg-6 d-flex side-right">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/18-gatlinburg.jpg" alt="Gatlinburg Trip!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Gatlinburg Trip!</span>
+                  <span class="date">Nov 21st-23rd, 2025</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Gatlinburg Trip!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center justify-content-lg-end">
+            <div class="w-100 pe-lg-4 text-lg-end">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal">
+          <div class="col-lg-6 d-flex side-left">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/19-my-graduation.jpg" alt="My Graduation!">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">My Graduation!</span>
+                  <span class="date">Dec 12th, 2025</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">My Graduation!</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <div class="w-100 ps-lg-4">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal flex-lg-row-reverse">
+          <div class="col-lg-6 d-flex side-right">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/20-2year.jpg" alt="2 Year Anniversary Celebration">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">2 Year Anniversary Celebration</span>
+                  <span class="date">Dec 13th, 2025</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">2 Year Anniversary Celebration</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center justify-content-lg-end">
+            <div class="w-100 pe-lg-4 text-lg-end">
+              <h4 class="h6 text-white-50 mb-2">Your Memory Text</h4>
+              <p class="mb-0 text-white">Write a little about this memory here...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="position-relative mb-5">
+        <div class="dot" style="top: 1.2rem;"></div>
+        <div class="row g-4 align-items-stretch reveal">
+          <div class="col-lg-6 d-flex side-left">
+            <div class="memory-card w-100 mb-3">
+              <div class="img-wrap">
+                <img src="images/21-buffalo-trip.jpg" alt="Buffalo Trip">
+              </div>
+              <div class="p-4">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
+                  <span class="tag">Buffalo Trip</span>
+                  <span class="date">Jan 3rd-5th, 2025</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Buffalo Trip</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            fetch(apiURL)
-                .then(response => response.json())
-                .then(data => {
-                    // Dynamically Update Weather Data from API to the HTML Elements
-                    txtTodayTemp.innerHTML = `${data.current.temperature_2m}°F`
-                    txtHumidity.innerHTML = `${data.current.relative_humidity_2m}%`
-                    txtPrecip.innerHTML = `${data.hourly.precipitation_probability[0]}%`
-                    txtTodayDate.innerHTML = new Date().toLocaleDateString()
+    </div>
+  </main>
 
-                    // Dynamically Update Weather Condition Icon and Text based on Weather Code
-                    switch(data.current.weather_code) {
-                        case 0:
-                            icnCondition.className = "bi bi-brightness-high-fill text-warning fs-1 ms-2" // Clear Sky
-                            txtCondition.innerHTML = "Clear Sky"
-                            break;
-                        case 1:
-                            icnCondition.className = "bi bi-cloud-sun-fill text-secondary fs-1 ms-2" // Mostly Clear
-                            txtCondition.innerHTML = "Mostly Clear"
-                            break;
-                        case 2:
-                            icnCondition.className = "bi bi-clouds-fill text-secondary fs-1 ms-2" // Partly Cloudy
-                            txtCondition.innerHTML = "Partly Cloudy"
-                            break;
-                        case 3:
-                            icnCondition.className = "bi bi-cloud-fill text-dark fs-1 ms-2" // Overcast
-                            txtCondition.innerHTML = "Overcast"
-                            break;
-                        case 45:
-                            icnCondition.className = "bi bi-cloud-fog-fill text-secondary fs-1 ms-2" // Fog
-                            txtCondition.innerHTML = "Fog"
-                            break;
-                        case 48:
-                            icnCondition.className = "bi bi-cloud-fog-fill text-secondary fs-1 ms-2" // Fog
-                            txtCondition.innerHTML = "Fog"
-                            break;
-                        case 51:
-                            icnCondition.className = "bi bi-cloud-drizzle-fill text-primary fs-1 ms-2" // Light Drizzle
-                            txtCondition.innerHTML = "Light Drizzle"
-                            break;
-                        case 53:
-                            icnCondition.className = "bi bi-cloud-drizzle-fill text-primary fs-1 ms-2" // Moderate Drizzle
-                            txtCondition.innerHTML = "Moderate Drizzle"
-                            break;
-                        case 55:
-                            icnCondition.className = "bi bi-cloud-rain-heavy-fill text-primary fs-1 ms-2" // Heavy Drizzle
-                            txtCondition.innerHTML = "Heavy Drizzle"
-                            break;
-                        case 61:
-                            icnCondition.className = "bi bi-cloud-rain-fill text-primary fs-1 ms-2" // Light Rain
-                            txtCondition.innerHTML = "Light Rain"
-                            break;
-                        case 63:
-                            icnCondition.className = "bi bi-cloud-rain-fill text-primary fs-1 ms-2" // Moderate Rain
-                            txtCondition.innerHTML = "Moderate Rain"
-                            break;
-                        case 65:
-                            icnCondition.className = "bi bi-cloud-rain-heavy-fill text-primary fs-1 ms-2" // Heavy Rain
-                            txtCondition.innerHTML = "Heavy Rain"
-                            break;
-                        case 71:
-                            icnCondition.className = "bi bi-snow text-info fs-1 ms-2" // Light Snow
-                            txtCondition.innerHTML = "Light Snow"
-                            break;
-                        case 73:
-                            icnCondition.className = "bi bi-snow text-info fs-1 ms-2" // Moderate Snow
-                            txtCondition.innerHTML = "Moderate Snow"
-                            break;
-                        case 75:
-                            icnCondition.className = "bi bi-snow2 text-info fs-1 ms-2" // Heavy Snow
-                            txtCondition.innerHTML = "Heavy Snow"
-                            break;
-                        case 95:
-                            icnCondition.className = "bi bi-cloud-lightning-rain-fill text-danger fs-1 ms-2" // Thunderstorms
-                            txtCondition.innerHTML = "Thunderstorms"
-                            break;
-                        case 96:
-                            icnCondition.className = "bi bi-cloud-lightning-fill text-warning fs-1 ms-2" // Light Thunderstorms
-                            txtCondition.innerHTML = "Light Thunderstorms"
-                            break;
-                        case 99:
-                            icnCondition.className = "bi bi-cloud-lightning-rain-fill text-danger fs-1 ms-2" // Severe Thunderstorms
-                            txtCondition.innerHTML = "Severe Thunderstorms"
-                            break;
-                    };                    
-                })
-                .catch(error => console.error(error))
-        })
-    </script>
+  <!-- Valentine -->
+  <section id="valentine" class="valentine-wrap">
+    <div class="container">
+      <div class="val-card reveal">
+        <div class="content text-center">
+          <div class="mb-2" style="font-size:2.2rem;">💌</div>
+          <h2 class="fw-bold mb-2">Will you be my Valentine?</h2>
+          <p class="mb-4" style="color: rgba(21,58,42,.85);">
+            (There is clearly a correct answer.)
+          </p>
+
+          <div class="d-flex justify-content-center gap-3 flex-wrap position-relative" style="min-height: 54px;">
+            <button id="btnYes" class="btn btn-yes text-white fw-semibold px-4 rounded-pill">
+              Yes ❤️
+            </button>
+
+            <button id="btnNo" class="btn btn-no fw-semibold px-4 rounded-pill">
+              No 🙃
+            </button>
+          </div>
+
+          <div id="valMsg" class="mt-4 fw-semibold" style="color: rgba(21,58,42,.92);"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pb-4">
+    <div class="container text-center text-white-50">
+      Made with love 🌿
+    </div>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+        else entry.target.classList.remove('show'); // allows fade-out when scrolling back up
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Valentine interactions
+    const btnYes = document.getElementById('btnYes');
+    const btnNo  = document.getElementById('btnNo');
+    const msg    = document.getElementById('valMsg');
+
+    btnYes.addEventListener('click', () => {
+      msg.textContent = "YAY!!! 🥰 I love you so much. Happy Valentine’s Day ❤️";
+      btnNo.disabled = true;
+      btnYes.classList.add('shadow');
+    });
+
+    // Playful “No” button dodge
+    function dodgeNoButton() {
+      // On small screens, dodging feels annoying—just change the text instead.
+      if (window.matchMedia('(max-width: 576px)').matches) {
+        btnNo.textContent = "Try again 😄";
+        return;
+      }
+
+      const parent = btnNo.parentElement;
+      parent.style.position = 'relative';
+
+      // random position within the parent container
+      const pad = 10;
+      const parentRect = parent.getBoundingClientRect();
+      const btnRect = btnNo.getBoundingClientRect();
+
+      const maxX = parentRect.width - btnRect.width - pad;
+      const maxY = parentRect.height - btnRect.height - pad;
+
+      const x = Math.max(pad, Math.random() * Math.max(1, maxX));
+      const y = Math.max(pad, Math.random() * Math.max(1, maxY));
+
+      btnNo.style.position = 'absolute';
+      btnNo.style.left = `${x}px`;
+      btnNo.style.top  = `${y}px`;
+    }
+
+    btnNo.addEventListener('mouseenter', dodgeNoButton);
+    btnNo.addEventListener('click', () => {
+      msg.textContent = "Hmm… are you *sure*? 😅";
+      dodgeNoButton();
+    });
+  </script>
 </body>
 </html>
-
-<!-- 
-Generative AI Uses:
-- In this assignment, the main areas that I used Generative AI to help me out were for little things here and there.
-One example is the switch statement that I used to determine the weather condition based on the weather code that was 
-returned from the API. I could have easily done this manually, but I wanted to use ChatGPT to speed up the process 
-instead of manually typing out each condition and the respective icons. This helped me to save time.
-
-- Another area that I used Generative AI for was for helping me figure out how to get started on working for the assignment.
-It helped me lay out the things I needed to do first and options I could take to help me get the ball rolling.
-
-- I did not have Chat GPT write the code for me, though I did use it to help me figure out why certain styling features
-weren't formatting as expected. It helped me to understand where I was going wrong and how to fix it.
-
-- Lastly, I used Generative AI to help me figure out how the manifest file should be structured and steps needed to
-implement my code as a PWA.
--->
