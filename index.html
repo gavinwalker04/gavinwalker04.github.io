@@ -209,10 +209,46 @@
       .dot{ left: 1rem; transform:none; }
       .side-left, .side-right{ justify-content: flex-start; }
     }
+
+    #floating-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* lets user click through */
+    overflow: hidden;
+    z-index: 1;
+    }
+
+    .heart {
+    position: absolute;
+    color: rgba(255, 0, 100, 0.6);
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+    from {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-10vh) scale(1.4);
+        opacity: 0;
+    }
+    }
+
+    body > *:not(#floating-overlay) {
+    z-index: 2;
+    }
   </style>
 </head>
 
 <body>
+
+    <div id="floating-overlay"></div>
+
 
   <!-- Hero -->
   <header id="start" class="hero">
@@ -769,6 +805,27 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
   <script>
+
+    const overlay = document.getElementById('floating-overlay');
+
+    function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '❤️';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (12 + Math.random() * 24) + 'px';
+    heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+
+    overlay.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+    }
+
+    setInterval(createHeart, 300);
+
     // Fade-in on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
