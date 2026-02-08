@@ -70,10 +70,6 @@
       letter-spacing: -0.02em;
       text-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
-    .hero p{
-      max-width: 56ch;
-      color: rgba(246,242,232,.92);
-    }
 
     /* Timeline vertical line */
     .timeline{
@@ -256,18 +252,18 @@
 
 
   <!-- Hero -->
-  <header id="start" class="hero">
+  <header id="start" class="hero text-center">
     <div class="container align-items-center text-center">
-      <div class="hero-badge mb-3">
+      <div class="hero-badge mb-3 mx-auto">
         <span>📅</span>
-        <span>December 20, 2023 → Now</span>
+        <span>December 20, 2023 → Now & Forever</span>
       </div>
 
-      <h1 class="display-5 mb-3">A Timeline of Us</h1>
-      <p class="mb-4">
+      <h1 class="display-5 mb-3 text-deep-red">A Timeline of Us</h1>
+      <hr />
+      <p class="mb-4 align-items-center justify-content-center d-flex gap-2 text-center mx-auto fw-bold w-100 text-deep-red">
         Hey Tavis! I hope you enjoy this trip down memory lane of our relationship. I love you!!
       </p>
-
     </div>
   </header>
 
@@ -282,7 +278,36 @@
           <div class="col-lg-6 d-flex side-left">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/01-first-date.jpg" alt="First Date">
+                <div id="carouselFirstDate" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem1/IMG_7135.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem1/IMG_7136.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem1/IMG_7145.JPG" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem1/IMG_7179.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem1/IMG_7211.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem1/IMG_7229.JPG" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselFirstDate" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselFirstDate" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -306,7 +331,30 @@
           <div class="col-lg-6 d-flex side-right">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/02-snow-day.jpg" alt="Snow Day">
+                <div id="carousel2" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem2/IMG_7489.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem2/IMG_7491.JPG" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem2/IMG_7484.jpeg" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem2/IMG_7481.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -330,7 +378,30 @@
           <div class="col-lg-6 d-flex side-left">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/03-valentines.jpg" alt="1st Valentine's Day">
+                <div id="carousel3" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem3/IMG_8077.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem3/IMG_7802.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem3/IMG_8081.JPG" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem3/IMG_8085.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel3" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel3" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -354,8 +425,31 @@
           <div class="col-lg-6 d-flex side-right">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/04-birthday.jpg" alt="My 5th Birthday">
-              </div>
+                <div id="carousel4" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem4/IMG_0112.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem4/IMG_0106.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem4/IMG_0130.jpeg" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem4/IMG_8875.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel4" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel4" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
                   <span class="tag">My 5th Birthday</span>
@@ -378,7 +472,36 @@
           <div class="col-lg-6 d-flex side-left">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/04-virgin-falls.jpg" alt="Virgin Falls Hike">
+                <div id="carousel5" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem5/DSC_4693.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem5/IMG_8373.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem5/IMG_8445.jpeg" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem5/DSC_4785.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem5/IMG_8427.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem5/IMG_8392.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel5" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel5" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -402,7 +525,30 @@
           <div class="col-lg-6 d-flex side-right">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/05-summer-fun.jpg" alt="Summer Fun Day">
+                <div id="carousel6" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem6/IMG_9530.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem6/IMG_9813.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem6/IMG_9549.jpeg" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem6/IMG_9558.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel6" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel6" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -426,7 +572,30 @@
           <div class="col-lg-6 d-flex side-left">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/06-nashville-bday.jpg" alt="Nashville B-Day">
+                <div id="carousel7" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem7/IMG_0123.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem7/IMG_0134.JPG" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem7/IMG_0128.JPG" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem7/IMG_0133.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel7" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel7" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -450,7 +619,27 @@
           <div class="col-lg-6 d-flex side-right">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/07-rks-concert.jpg" alt="RKS Concert!">
+                <div id="carousel8" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem8/IMG_1600.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem8/IMG_1613.JPG" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem8/IMG_1629.jpg" class="d-block  " alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel8" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel8" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -474,7 +663,30 @@
           <div class="col-lg-6 d-flex side-left">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/08-halloween.jpg" alt="Halloween!">
+                <div id="carousel9" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem9/20241102_112526_08EC6C.JPEG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem9/IMG_1737.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem9/20241102_112532_02FE06.JPEG" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem9/Resized_20241031_190249.JPEG" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel9" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel9" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -498,7 +710,33 @@
           <div class="col-lg-6 d-flex side-right">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/09-baptism.jpg" alt="My Baptism!">
+                <div id="carousel10" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem10/IMG_7494.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem10/IMG_7483.JPG" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem10/IMG_7492.jpeg" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem10/IMG_7486.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem10/IMG_7502.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel10" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel10" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -522,7 +760,30 @@
           <div class="col-lg-6 d-flex side-left">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/10-your-graduation.jpg" alt="Your Graduation!">
+                <div id="carousel11" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem11/IMG_2115.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem11/IMG_2119.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem11/IMG_3096.jpeg" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem11/IMG_2104.JPG" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel11" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel11" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -546,7 +807,30 @@
           <div class="col-lg-6 d-flex side-right">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/11-1year.jpg" alt="1 Year Celebration">
+                <div id="carousel12" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem12/IMG_2221.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem12/IMG_2208.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem12/IMG_2246.JPG" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem12/IMG_2226.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel12" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel12" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -570,7 +854,30 @@
           <div class="col-lg-6 d-flex side-left">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/12-2nd-valentines.jpg" alt="2nd Valentine's Day Together!">
+                <div id="carousel13" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem13/IMG_2688.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem13/IMG_2666.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem13/IMG_2690.jpeg" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem13/IMG_2689.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel13" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel13" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -594,7 +901,42 @@
           <div class="col-lg-6 d-flex side-right">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/13-summer-fun.jpg" alt="Summer Fun!">
+                <div id="carousel14" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem14/IMG_3887.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem14/IMG_3921.JPG" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem14/IMG_3968.jpeg" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem14/IMG_3997.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem14/IMG_0738.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem14/IMG_0729.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem14/IMG_4136.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem14/IMG_4132.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel14" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel14" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -618,7 +960,27 @@
           <div class="col-lg-6 d-flex side-left">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/14-kurtis-conner.jpg" alt="Kurtis Conner Show!">
+                <div id="carousel15" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem15/IMG_6471.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem15/IMG_6473.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem15/IMG_6472.jpeg" class="d-block  " alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel15" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel15" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -642,7 +1004,30 @@
           <div class="col-lg-6 d-flex side-right">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/15-lumineers.jpg" alt="Lumineers Concert!">
+                <div id="carousel16" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem16/IMG_6590.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem16/IMG_6609.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem16/IMG_6592.JPG" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem16/IMG_6669.JPG" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel16" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel16" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -666,7 +1051,30 @@
           <div class="col-lg-6 d-flex side-left">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/16-wedding.jpg" alt="Wedding Date!">
+                <div id="carousel17" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem17/IMG_6749.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem17/IMG_6753.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem17/IMG_6764.JPG" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem17/IMG_6737.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel17" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel17" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -690,7 +1098,33 @@
           <div class="col-lg-6 d-flex side-right">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/17-halloween-bob-linda.jpg" alt="Halloween Bob and Linda!">
+                <div id="carousel18" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem18/IMG_1566.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem18/IMG_1588.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem18/IMG_1583.jpeg" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem18/IMG_7089.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem18/IMG_1599.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel18" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel18" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -714,7 +1148,39 @@
           <div class="col-lg-6 d-flex side-left">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/18-gatlinburg.jpg" alt="Gatlinburg Trip!">
+                <div id="carousel19" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem19/IMG_7305.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem19/IMG_7297.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem19/IMG_7301.jpeg" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem19/IMG_7312.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem19/IMG_7342.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem19/IMG_7365.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem19/IMG_7417.jpeg" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel19" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel19" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -738,7 +1204,30 @@
           <div class="col-lg-6 d-flex side-right">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/19-my-graduation.jpg" alt="My Graduation!">
+                <div id="carousel20" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem20/IMG_1738.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem20/IMG_1833.JPG" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem20/IMG_2021.JPG" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem20/IMG_0112.JPG" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel20" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel20" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -762,7 +1251,33 @@
           <div class="col-lg-6 d-flex side-left">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/20-2year.jpg" alt="2 Year Anniversary Celebration">
+                <div id="carousel21" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem21/IMG_2240.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem21/IMG_7651.jpeg" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem21/IMG_7678.JPG" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem21/IMG_7661.jpeg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem21/IMG_7657.JPG" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel21" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel21" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
@@ -786,7 +1301,39 @@
           <div class="col-lg-6 d-flex side-right">
             <div class="memory-card w-100 mb-3">
               <div class="img-wrap">
-                <img src="images/21-buffalo-trip.jpg" alt="Buffalo Trip">
+                <div id="carousel22" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner img-wrap h-100" style="min-height: 240px;">
+                        <div class="carousel-item active h-100">
+                            <img src="images/mem22/IMG_7851.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem22/IMG_7856.JPG" class="d-block " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem22/IMG_3008.jpg" class="d-block  " alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem22/IMG_2946.jpg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem22/IMG_7956.JPG" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem22/IMG_3042.jpg" class="d-block" alt="First Date">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img src="images/mem22/IMG_8024.JPG" class="d-block" alt="First Date">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel22" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel22" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
               </div>
               <div class="p-4">
                 <div class="d-flex align-items-center justify-content-between gap-3 mb-2">
